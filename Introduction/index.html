@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/mystyle.css">
+<link rel="stylesheet" href="css/css-grid.css">
 <title>webprog IT241</title>
 </head>
 <body>
@@ -19,7 +19,21 @@ Goals In Life / Dream My dream is to travel across the globe, explore different 
 Picture Gallery<br>
  <img src="https://www.w3schools.com/html/img_girl.jpg" alt="Girl with a jacket" width="500" height="600">
 </p>
- 
+
+ .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: dodgerblue;
+  padding: 5px;
+  gap: 5px;
+}
+.container div {
+  background-color: #f1f1f1;
+  color: #000;
+  padding: 10px;
+  font-size: 30px;
+  text-align: center;
+}
  
   
 </body>

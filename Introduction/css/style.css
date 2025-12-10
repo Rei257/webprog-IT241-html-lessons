@@ -1,0 +1,47 @@
+body {
+background: linear-gradient(to left, #030200, #6d2668);
+min-height: 100vh;
+color: #f0e7dc;
+}
+
+.custom-box {
+background: linear-gradient(to right, #030200, #6d2668);
+border-radius: 20px;
+}
+
+h1 {
+font-family: "Press Start 2P", cursive;
+color: #f0e7dc;
+font-size: 30px;
+}
+
+h2 {
+font-family: "Press Start 2P", cursive;
+color: #f0e7dc;
+line-height: 1.5;
+font-size: 18px;
+}
+
+h3 {
+font-family: "Press Start 2P", cursive;
+color: #f0e7dc;
+line-height: 1.5;
+font-size: 28px;
+}
+
+p {
+font-family: "Noto Sans Mono", monospace;
+font-size: 18px;
+font-weight: 600;
+}
+
+
+hr {
+border: 0; 
+opacity: 100%; 
+background-color: #f0e7dc;
+height: 3px;
+margin: 30px 0;
+background: linear-gradient(to left, #030200, #6d2668);
+border-radius: 10px;
+}

@@ -3,6 +3,7 @@ body {
   min-height: 100vh;
   color: #f0e7dc;
   margin: 0;
+  position: relative;
 }
 
 .header {
@@ -53,8 +54,6 @@ body {
   border-radius: 20px;
   padding: 1.5rem;
   transition: transform 0.2s ease;
-  position: relative;
-  overflow: hidden;
 }
 
 .custom-box:hover {
@@ -80,75 +79,30 @@ body {
   font-size: 15px;
 }
 
-.kuromi-hover {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 70px;
-  opacity: 0;
-  transform: translateY(10px) scale(0.9);
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.custom-box:hover .kuromi-hover {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-details {
-  margin-top: 1rem;
-}
-
-summary {
-  font-family: "Press Start 2P", cursive;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-summary::after {
-  content: " ▼";
-}
-
-details[open] summary::after {
-  content: " ▲";
-}
-
-details ul {
-  margin-top: 0.8rem;
-  padding-left: 1rem;
-}
-
-details li {
-  margin-bottom: 0.5rem;
-}
-
-details a {
-  color: #f0e7dc;
-  text-decoration: none;
-  border-bottom: 1px dashed #f0e7dc;
-  font-family: "Noto Sans Mono", monospace;
-  font-size: 14px;
-}
-
-.full {
-  grid-column: span 2;
-}
-
 .footer {
   text-align: center;
   padding: 1rem;
   font-size: 13px;
 }
 
+/* Kuromi corners */
+.kuromi-corner {
+  position: fixed;
+  width: 70px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.top-left { top: 10px; left: 10px; }
+.top-right { top: 10px; right: 10px; }
+.bottom-left { bottom: 10px; left: 10px; }
+.bottom-right { bottom: 10px; right: 10px; }
+
 @media (max-width: 768px) {
   .grid-container {
     grid-template-columns: 1fr;
     padding: 1rem;
-  }
-
-  .full {
-    grid-column: span 1;
   }
 
   .header h1 {

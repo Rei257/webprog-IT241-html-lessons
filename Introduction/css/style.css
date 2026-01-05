@@ -53,6 +53,8 @@ body {
   border-radius: 20px;
   padding: 1.5rem;
   transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .custom-box:hover {
@@ -76,6 +78,22 @@ body {
 .custom-box p {
   font-family: "Noto Sans Mono", monospace;
   font-size: 15px;
+}
+
+.kuromi-hover {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 70px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.9);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.custom-box:hover .kuromi-hover {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 details {

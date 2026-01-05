@@ -4,74 +4,68 @@ body {
   color: #f0e7dc;
   margin: 0;
   position: relative;
-  scroll-behavior: smooth; /* smooth scrolling for anchors */
+  font-family: "Noto Sans Mono", monospace;
 }
 
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(3,2,0,0.8);
+  background: rgba(3,2,0,0.9);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
-  padding: 0.5rem;
-  z-index: 200;
+  padding: 0.5rem 1rem;
+  z-index: 100;
 }
 
-.navbar a {
+.navbar .nav-btn {
   color: #f0e7dc;
   text-decoration: none;
   font-family: "Press Start 2P", cursive;
   font-size: 10px;
-  transition: color 0.2s;
 }
 
-.navbar a:hover {
+.navbar .nav-btn:hover {
   color: #ff69b4;
 }
 
-.header {
-  text-align: center;
-  padding: 1rem 0;
-}
-
-.hero {
+.landing {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 3rem;
+  justify-content: center;
+  margin-top: 5rem;
+  text-align: center;
 }
 
-.hero img {
+.landing img {
   width: 180px;
   height: 180px;
   border-radius: 50%;
   border: 4px solid #f0e7dc;
-  margin-bottom: 1rem;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.hero img.zoomed {
-  transform: scale(3);
+.landing img.zoomed {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(3);
   z-index: 999;
   border-radius: 10px;
-  box-shadow: 0 0 20px #fff;
-}
-
-.hero h2 {
-  font-family: "Press Start 2P", cursive;
-  font-size: 18px;
+  box-shadow: 0 0 30px #fff;
 }
 
 .subtitle {
-  font-family: "Noto Sans Mono", monospace;
   font-size: 14px;
   opacity: 0.9;
+}
+
+.hero h2, .landing h2 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 18px;
+  margin-top: 1rem;
 }
 
 .grid-container {
@@ -107,63 +101,15 @@ body {
 }
 
 .custom-box p {
-  font-family: "Noto Sans Mono", monospace;
   font-size: 15px;
 }
 
-details {
-  margin-top: 1rem;
-}
-
-summary {
-  font-family: "Press Start 2P", cursive;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-summary::after {
-  content: " ▼";
-}
-
-details[open] summary::after {
-  content: " ▲";
-}
-
-details ul {
-  margin-top: 0.8rem;
-  padding-left: 1rem;
-}
-
-details li {
-  margin-bottom: 0.5rem;
-}
-
-details a {
-  color: #f0e7dc;
-  text-decoration: none;
-  border-bottom: 1px dashed #f0e7dc;
-  font-family: "Noto Sans Mono", monospace;
-  font-size: 14px;
-}
-
-.full {
-  grid-column: span 2;
-}
-
-.footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 13px;
-}
-
-/* Kuromi corners */
 .kuromi-corner {
   position: fixed;
   width: 70px;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease;
   z-index: 100;
-  cursor: pointer;
 }
 
 .top-left { top: 10px; left: 10px; }
@@ -171,22 +117,14 @@ details a {
 .bottom-left { bottom: 10px; left: 10px; }
 .bottom-right { bottom: 10px; right: 10px; }
 
+.footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 13px;
+}
+
 @media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-
-  .full {
-    grid-column: span 1;
-  }
-
-  .navbar {
-    flex-wrap: wrap;
-    font-size: 9px;
-  }
-
-  .hero img {
+  .landing img {
     width: 140px;
     height: 140px;
   }

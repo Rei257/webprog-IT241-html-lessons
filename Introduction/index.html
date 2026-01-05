@@ -3,35 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JC Guzman - Landing Page</title>
+  <title>JC Guzman - About Me</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Navigation bar -->
+  <!-- Top navigation -->
   <nav class="navbar">
-    <a href="about.html#about">About Me</a>
-    <a href="about.html#education">Education</a>
-    <a href="about.html#course">Course</a>
-    <a href="about.html#it-experience">IT Experience</a>
-    <a href="about.html#hobbies">Hobbies</a>
-    <a href="about.html#goals">Goals / Dreams</a>
-    <a href="about.html#resources">Resources</a>
+    <a href="index.html" class="nav-btn">Home</a>
   </nav>
 
-  <!-- Hero section -->
-  <section class="landing">
-    <img id="profile-pic" src="jc (2).jpg" alt="Profile Picture">
-    <h2>John Carl Gabriel Guzman</h2>
-    <p class="subtitle">BSIT • Web Programming (IT241)</p>
-  </section>
+  <!-- Kuromi corners -->
+  <img class="kuromi-corner top-left" src="undefined - Imgur.png" alt="Kuromi">
+  <img class="kuromi-corner top-right" src="undefined - Imgur.png" alt="Kuromi">
+  <img class="kuromi-corner bottom-left" src="undefined - Imgur.gif" alt="Kuromi">
+  <img class="kuromi-corner bottom-right" src="undefined - Imgur.gif" alt="Kuromi">
+
+  <!-- Main content -->
+  <main class="grid-container">
+
+    <div id="about" class="custom-box interactive" data-kuromi="true">
+      <h3>About Me</h3>
+      <p>Calm, quiet. I enjoy watching movies and anime.</p>
+    </div>
+
+    <div id="education" class="custom-box interactive" data-kuromi="true">
+      <h3>Education</h3>
+      <p>Asia Pacific College<br>2nd Year BSIT</p>
+    </div>
+
+    <div id="course" class="custom-box interactive" data-kuromi="true">
+      <h3>Course</h3>
+      <p>Web Programming (IT241)</p>
+    </div>
+
+    <div id="it-experience" class="custom-box interactive" data-kuromi="true">
+      <h3>IT Experience</h3>
+      <p>Kali Linux<br>Python<br>Ubuntu<br>HTML & CSS</p>
+    </div>
+
+    <div id="hobbies" class="custom-box interactive" data-kuromi="true">
+      <h3>Hobbies & Interests</h3>
+      <p>Music<br>Manga & Manhwa<br>Anime<br>Movies</p>
+    </div>
+
+    <div id="goals" class="custom-box interactive" data-kuromi="true">
+      <h3>Goals / Dreams</h3>
+      <p>To become financially successful and travel around the world.</p>
+    </div>
+
+    <div id="resources" class="custom-box interactive full" data-kuromi="true">
+      <h3>Resources & References</h3>
+      <details>
+        <summary>HTML References</summary>
+        <ul>
+          <li><a href="https://www.w3schools.com/html/" target="_blank">W3Schools – HTML Tutorial</a></li>
+          <li><a href="https://www.w3schools.com/html/html5_semantic_elements.asp" target="_blank">W3Schools – HTML5 Semantic Elements</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>CSS References</summary>
+        <ul>
+          <li><a href="https://www.w3schools.com/css/" target="_blank">W3Schools – CSS Tutorial</a></li>
+          <li><a href="https://www.w3schools.com/css/css_grid.asp" target="_blank">W3Schools – CSS Grid Layout</a></li>
+          <li><a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank">W3Schools – CSS Flexbox</a></li>
+        </ul>
+      </details>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 APC Web Programming</p>
+  </footer>
 
   <script>
-    // Profile picture click-to-zoom
-    const profilePic = document.getElementById('profile-pic');
-    profilePic.addEventListener('click', () => {
-      profilePic.classList.toggle('zoomed');
+    // Kuromi hover logic
+    const boxes = document.querySelectorAll('.custom-box[data-kuromi]');
+    const kuromis = document.querySelectorAll('.kuromi-corner');
+
+    boxes.forEach(box => {
+      box.addEventListener('mouseenter', () => {
+        kuromis.forEach(k => k.style.opacity = '1');
+      });
+      box.addEventListener('mouseleave', () => {
+        kuromis.forEach(k => k.style.opacity = '0');
+      });
     });
   </script>
 

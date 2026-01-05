@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JC Guzman - Personal Profile</title>
+  <title>JC Guzman - Sections</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -11,6 +11,7 @@
 
   <!-- Navigation bar -->
   <nav class="navbar">
+    <a href="index.html">Back to Profile</a>
     <a href="#about">About Me</a>
     <a href="#education">Education</a>
     <a href="#course">Course</a>
@@ -19,13 +20,6 @@
     <a href="#goals">Goals / Dreams</a>
     <a href="#resources">Resources</a>
   </nav>
-
-  <!-- Hero section -->
-  <section class="hero">
-    <img id="profile-pic" src="jc (2).jpg" alt="Profile Picture">
-    <h2>John Carl Gabriel Guzman</h2>
-    <p class="subtitle">BSIT • Web Programming (IT241)</p>
-  </section>
 
   <!-- Kuromi corners -->
   <img class="kuromi-corner top-left" src="undefined - Imgur.png" alt="Kuromi">
@@ -97,7 +91,7 @@
       <details>
         <summary>AI Assistance</summary>
         <ul>
-          <li><a href="https://chatgpt.com/share/695bb5b0-81d0-8008-93de-efdd89f1deaf" target="_blank">ChatGPT</a></li>
+          <li><a href="https://chat.openai.com" target="_blank">ChatGPT</a></li>
         </ul>
       </details>
     </div>
@@ -109,12 +103,6 @@
   </footer>
 
   <script>
-    // Profile picture click-to-zoom
-    const profilePic = document.getElementById('profile-pic');
-    profilePic.addEventListener('click', () => {
-      profilePic.classList.toggle('zoomed');
-    });
-
     // Kuromi hover logic
     const boxes = document.querySelectorAll('.custom-box[data-kuromi]');
     const kuromis = document.querySelectorAll('.kuromi-corner');

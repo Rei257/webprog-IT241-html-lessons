@@ -14,7 +14,7 @@
   </header>
 
   <section class="hero">
-    <img src="jc (2).jpg" alt="Profile Picture">
+    <img id="profile-pic" src="jc (2).jpg" alt="Profile Picture">
     <h2>John Carl Gabriel Guzman</h2>
     <p class="subtitle">BSIT • Web Programming (IT241)</p>
   </section>
@@ -29,7 +29,7 @@
 
     <div class="custom-box interactive" data-kuromi="true">
       <h3>About Me</h3>
-      <p>Calm, quiet, and focused. I enjoy tech, coding, and anything that challenges my mind.</p>
+      <p>Calm, quiet. I enjoy watching movie and anime.</p>
     </div>
 
     <div class="custom-box interactive" data-kuromi="true">
@@ -93,11 +93,6 @@
       </details>
     </div>
 
-    <div class="custom-box interactive full">
-      <h3>Picture Gallery</h3>
-      <p>(To be implemented using Vue.js)</p>
-    </div>
-
   </main>
 
   <footer class="footer">
@@ -105,7 +100,13 @@
   </footer>
 
   <script>
-    // Show Kuromi on box hover
+    // Profile picture click-to-zoom
+    const profilePic = document.getElementById('profile-pic');
+    profilePic.addEventListener('click', () => {
+      profilePic.classList.toggle('zoomed');
+    });
+
+    // Kuromi hover logic
     const boxes = document.querySelectorAll('.custom-box[data-kuromi]');
     const kuromis = document.querySelectorAll('.kuromi-corner');
 
@@ -115,13 +116,6 @@
       });
       box.addEventListener('mouseleave', () => {
         kuromis.forEach(k => k.style.opacity = '0');
-      });
-    });
-
-    // Click-to-zoom Kuromi
-    kuromis.forEach(k => {
-      k.addEventListener('click', () => {
-        k.classList.toggle('zoomed');
       });
     });
   </script>

@@ -164,3 +164,19 @@ details a {
     height: 140px;
   }
 }
+
+#profile-pic {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#profile-pic.zoomed {
+  transform: scale(3);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(3);
+  z-index: 999;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #fff;
+}

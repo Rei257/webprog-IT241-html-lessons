@@ -129,14 +129,21 @@ details a {
   position: fixed;
   width: 70px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 100;
+  cursor: pointer;
 }
 
 .top-left { top: 10px; left: 10px; }
 .top-right { top: 10px; right: 10px; }
 .bottom-left { bottom: 10px; left: 10px; }
 .bottom-right { bottom: 10px; right: 10px; }
+
+/* Zoomed effect */
+.kuromi-corner.zoomed {
+  transform: scale(5);
+  z-index: 999;
+}
 
 @media (max-width: 768px) {
   .grid-container {

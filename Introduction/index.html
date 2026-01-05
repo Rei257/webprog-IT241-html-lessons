@@ -105,6 +105,7 @@
   </footer>
 
   <script>
+    // Show Kuromi on box hover
     const boxes = document.querySelectorAll('.custom-box[data-kuromi]');
     const kuromis = document.querySelectorAll('.kuromi-corner');
 
@@ -114,6 +115,13 @@
       });
       box.addEventListener('mouseleave', () => {
         kuromis.forEach(k => k.style.opacity = '0');
+      });
+    });
+
+    // Click-to-zoom Kuromi
+    kuromis.forEach(k => {
+      k.addEventListener('click', () => {
+        k.classList.toggle('zoomed');
       });
     });
   </script>

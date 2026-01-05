@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JC Guzman - Landing Page</title>
+  <title>JC Guzman - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Top navigation -->
+  <!-- Navigation -->
   <nav class="navbar">
     <a href="index.html" class="nav-btn">Home</a>
     <a href="about.html" class="nav-btn">About Me</a>
@@ -22,14 +22,17 @@
     <p class="subtitle">BSIT • Web Programming (IT241)</p>
   </section>
 
-  <!-- Modal for zoomed image -->
+  <!-- Modal zoom -->
   <div id="modal" class="modal">
     <span id="close-modal" class="close">&times;</span>
     <img id="modal-img" src="jc (2).jpg" alt="Profile Picture Zoomed">
   </div>
 
+  <footer class="footer">
+    <p>© 2026 APC Web Programming</p>
+  </footer>
+
   <script>
-    // Modal zoom logic
     const profilePic = document.getElementById('profile-pic');
     const modal = document.getElementById('modal');
     const closeModal = document.getElementById('close-modal');

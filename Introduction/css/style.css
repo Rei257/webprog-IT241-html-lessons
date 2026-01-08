@@ -149,3 +149,33 @@ body {
     height: 140px;
   }
 }
+/* Side images */
+.side-image {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  z-index: 50;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.side-image:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.side-left {
+  left: 10px;
+}
+
+.side-right {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .side-image {
+    width: 60px;
+    display: block;
+  }
+}

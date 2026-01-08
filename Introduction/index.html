@@ -9,23 +9,28 @@
 </head>
 <body>
 <div id="app">
+
   <!-- Navigation -->
   <nav class="navbar">
     <a href="index.html" class="nav-btn">Home</a>
     <a href="about.html" class="nav-btn">About Me</a>
   </nav>
 
+  <!-- Side Images -->
+  <img class="side-image side-left" src="JC.jpg" alt="Left Decoration" @click="openZoom('left')">
+  <img class="side-image side-right" src="Jotaro.jpg" alt="Right Decoration" @click="openZoom('right')">
+
   <!-- Landing profile -->
   <section class="landing">
-    <img id="profile-pic" src="jc (2).jpg" alt="Profile Picture" @click="showModal = true">
-    <h2>{{ name }}</h2>
-    <p class="subtitle">{{ subtitle }}</p>
+    <img id="profile-pic" src="jc (2).jpg" alt="Profile Picture" @click="openZoom('profile')">
+    <h2>John Carl Gabriel Guzman</h2>
+    <p class="subtitle">BSIT • Web Programming (IT241)</p>
   </section>
 
   <!-- Modal zoom -->
-  <div v-if="showModal" class="modal" @click.self="showModal = false">
-    <span class="close" @click="showModal = false">&times;</span>
-    <img id="modal-img" src="jc (2).jpg" alt="Profile Picture Zoomed">
+  <div v-if="zoomTarget" class="modal" @click.self="zoomTarget = null">
+    <span class="close" @click="zoomTarget = null">&times;</span>
+    <img :src="getZoomImage()" alt="Zoomed Image">
   </div>
 
   <footer class="footer">
@@ -33,17 +38,41 @@
   </footer>
 </div>
 
-<!-- Vue.js -->
+<!-- Vue.js and Hammer.js -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 <script>
-const { createApp } = Vue;
+const { createApp, ref, onMounted } = Vue;
 
 createApp({
-  data() {
+  setup() {
+    const zoomTarget = ref(null);
+
+    const openZoom = (target) => {
+      zoomTarget.value = target;
+    };
+
+    const getZoomImage = () => {
+      if (zoomTarget.value === 'left') return 'JC.jpg';
+      if (zoomTarget.value === 'right') return 'Jotaro.jpg';
+      return 'jc (2).jpg';
+    };
+
+    onMounted(() => {
+      const modal = document.querySelector('.modal');
+      if (modal) {
+        const hammer = new Hammer(modal);
+        hammer.on("swipeleft swiperight", () => {
+          if (zoomTarget.value === 'left') zoomTarget.value = 'right';
+          else if (zoomTarget.value === 'right') zoomTarget.value = 'left';
+        });
+      }
+    });
+
     return {
-      name: "John Carl Gabriel Guzman",
-      subtitle: "BSIT • Web Programming (IT241)",
-      showModal: false
+      zoomTarget,
+      openZoom,
+      getZoomImage
     };
   }
 }).mount("#app");

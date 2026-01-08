@@ -149,7 +149,6 @@ body {
     height: 140px;
   }
 }
-/* Side images */
 .side-image {
   position: fixed;
   top: 50%;
@@ -179,3 +178,4 @@ body {
     display: block;
   }
 }
+

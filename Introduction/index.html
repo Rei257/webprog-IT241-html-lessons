@@ -17,8 +17,8 @@
   </nav>
 
   <!-- Side Images -->
-  <img class="side-image side-left" src="JC.jpg" alt="Left Decoration" @click="openZoom('left')">
-  <img class="side-image side-right" src="Jotaro.jpg" alt="Right Decoration" @click="openZoom('right')">
+  <img class="side-image side-left" :src="sideImages[leftIndex]" alt="Left Decoration" @click="openZoom('left')">
+  <img class="side-image side-right" :src="sideImages[rightIndex]" alt="Right Decoration" @click="openZoom('right')">
 
   <!-- Landing profile -->
   <section class="landing">
@@ -28,7 +28,7 @@
   </section>
 
   <!-- Modal zoom -->
-  <div v-if="zoomTarget" class="modal" @click.self="zoomTarget = null">
+  <div v-if="zoomTarget !== null" class="modal" @click.self="zoomTarget = null">
     <span class="close" @click="zoomTarget = null">&times;</span>
     <img :src="getZoomImage()" alt="Zoomed Image">
   </div>
@@ -47,30 +47,46 @@ const { createApp, ref, onMounted } = Vue;
 createApp({
   setup() {
     const zoomTarget = ref(null);
+    const sideImages = [
+      "Family.jpg",
+      "Friends.jpg",
+      "Gala.jpg"
+    ];
+    const leftIndex = ref(0);
+    const rightIndex = ref(1);
 
     const openZoom = (target) => {
       zoomTarget.value = target;
     };
 
     const getZoomImage = () => {
-      if (zoomTarget.value === 'left') return 'JC.jpg';
-      if (zoomTarget.value === 'right') return 'Jotaro.jpg';
-      return 'jc (2).jpg';
+      if (zoomTarget.value === 'left') return sideImages[leftIndex.value];
+      if (zoomTarget.value === 'right') return sideImages[rightIndex.value];
+      return "jc (2).jpg";
+    };
+
+    const cycleImage = (direction) => {
+      if (zoomTarget.value === 'left') {
+        leftIndex.value = (leftIndex.value + direction + sideImages.length) % sideImages.length;
+      } else if (zoomTarget.value === 'right') {
+        rightIndex.value = (rightIndex.value + direction + sideImages.length) % sideImages.length;
+      }
     };
 
     onMounted(() => {
       const modal = document.querySelector('.modal');
       if (modal) {
         const hammer = new Hammer(modal);
-        hammer.on("swipeleft swiperight", () => {
-          if (zoomTarget.value === 'left') zoomTarget.value = 'right';
-          else if (zoomTarget.value === 'right') zoomTarget.value = 'left';
-        });
+        hammer.on("swipeleft", () => cycleImage(1));
+        hammer.on("swiperight", () => cycleImage(-1));
       }
     });
 
     return {
       zoomTarget,
+      sideImages,
+      leftIndex,
+      rightIndex,
       openZoom,
       getZoomImage
     };

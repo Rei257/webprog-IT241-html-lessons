@@ -59,7 +59,8 @@ body {
 
 /* Modal */
 .modal {
-  display: none;
+  /* Vue v-if will handle showing/hiding */
+  display: flex; 
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -128,6 +129,7 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 100;
+  pointer-events: none; /* ✅ allows clicks to pass through */
 }
 
 .top-left { top: 10px; left: 10px; }
@@ -149,33 +151,40 @@ body {
     height: 140px;
   }
 }
-.side-image {
+
+/* Photo booth sides */
+.photo-booth {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  width: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   z-index: 50;
-  opacity: 0.8;
+}
+
+.photo-booth.left {
+  left: 10px;
+}
+
+.photo-booth.right {
+  right: 10px;
+}
+
+.booth-img {
+  width: 80px;
+  border: 2px solid #f0e7dc;
+  border-radius: 8px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.side-image:hover {
-  transform: translateY(-50%) scale(1.1);
-}
-
-.side-left {
-  left: 10px;
-}
-
-.side-right {
-  right: 10px;
+.booth-img:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
-  .side-image {
-    width: 60px;
-    display: block;
+  .photo-booth {
+    display: none; /* hide on small screens */
   }
 }
-

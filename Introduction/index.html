@@ -16,21 +16,27 @@
     <a href="about.html" class="nav-btn">About Me</a>
   </nav>
 
-  <!-- Side Images -->
-  <img class="side-image side-left" :src="sideImages[leftIndex]" alt="Left Decoration" @click="openZoom('left')">
-  <img class="side-image side-right" :src="sideImages[rightIndex]" alt="Right Decoration" @click="openZoom('right')">
+  <!-- Left Photo Booth -->
+  <div class="photo-booth left">
+    <img v-for="(img, i) in boothImages" :key="'left'+i" :src="img" class="booth-img" @click="openZoom(img)">
+  </div>
+
+  <!-- Right Photo Booth -->
+  <div class="photo-booth right">
+    <img v-for="(img, i) in boothImages" :key="'right'+i" :src="img" class="booth-img" @click="openZoom(img)">
+  </div>
 
   <!-- Landing profile -->
   <section class="landing">
-    <img id="profile-pic" src="jc (2).jpg" alt="Profile Picture" @click="openZoom('profile')">
+    <img id="profile-pic" src="jc (2).jpg" alt="Profile Picture" @click="openZoom('jc (2).jpg')">
     <h2>John Carl Gabriel Guzman</h2>
     <p class="subtitle">BSIT • Web Programming (IT241)</p>
   </section>
 
   <!-- Modal zoom -->
-  <div v-if="zoomTarget !== null" class="modal" @click.self="zoomTarget = null">
-    <span class="close" @click="zoomTarget = null">&times;</span>
-    <img :src="getZoomImage()" alt="Zoomed Image">
+  <div v-if="zoomImage" class="modal" @click.self="zoomImage = null">
+    <span class="close" @click="zoomImage = null">&times;</span>
+    <img :src="zoomImage" alt="Zoomed Image">
   </div>
 
   <footer class="footer">
@@ -38,58 +44,26 @@
   </footer>
 </div>
 
-<!-- Vue.js and Hammer.js -->
+<!-- Vue.js -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 <script>
-const { createApp, ref, onMounted } = Vue;
+const { createApp, ref } = Vue;
 
 createApp({
   setup() {
-    const zoomTarget = ref(null);
-    const sideImages = [
+    const boothImages = [
+      "jc2.jpg",     // replace with actual filename
       "Family.jpg",
-      "Friends.jpg",
-      "Gala.jpg"
+      "Gala.jpg",
+      "Friends.jpg"
     ];
-    const leftIndex = ref(0);
-    const rightIndex = ref(1);
+    const zoomImage = ref(null);
 
-    const openZoom = (target) => {
-      zoomTarget.value = target;
+    const openZoom = (img) => {
+      zoomImage.value = img;
     };
 
-    const getZoomImage = () => {
-      if (zoomTarget.value === 'left') return sideImages[leftIndex.value];
-      if (zoomTarget.value === 'right') return sideImages[rightIndex.value];
-      return "jc (2).jpg";
-    };
-
-    const cycleImage = (direction) => {
-      if (zoomTarget.value === 'left') {
-        leftIndex.value = (leftIndex.value + direction + sideImages.length) % sideImages.length;
-      } else if (zoomTarget.value === 'right') {
-        rightIndex.value = (rightIndex.value + direction + sideImages.length) % sideImages.length;
-      }
-    };
-
-    onMounted(() => {
-      const modal = document.querySelector('.modal');
-      if (modal) {
-        const hammer = new Hammer(modal);
-        hammer.on("swipeleft", () => cycleImage(1));
-        hammer.on("swiperight", () => cycleImage(-1));
-      }
-    });
-
-    return {
-      zoomTarget,
-      sideImages,
-      leftIndex,
-      rightIndex,
-      openZoom,
-      getZoomImage
-    };
+    return { boothImages, zoomImage, openZoom };
   }
 }).mount("#app");
 </script>

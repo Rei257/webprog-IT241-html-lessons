@@ -185,6 +185,17 @@ body {
 
 @media (max-width: 768px) {
   .photo-booth {
-    display: none; /* hide on small screens */
+    position: static;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1rem 0;
+    gap: 10px;
+  }
+
+  .booth-img {
+    width: 70px;
   }
 }
+
+
